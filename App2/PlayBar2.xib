@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlayBar2" customModule="App2" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeH-iQ-DXB">
@@ -35,15 +35,27 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZD-gY-26s">
                             <state key="normal" image="img-player-previous"/>
+                            <connections>
+                                <action selector="clickPrevious:" destination="iN0-l3-epB" eventType="touchUpInside" id="QsO-fD-i7C"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyw-0F-hDA">
                             <state key="normal" image="img-player-next"/>
+                            <connections>
+                                <action selector="clickNext:" destination="iN0-l3-epB" eventType="touchUpInside" id="tkp-XR-AsY"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yh5-5P-jUN">
                             <state key="normal" image="img-player-shuffle"/>
+                            <connections>
+                                <action selector="clickShuffle:" destination="iN0-l3-epB" eventType="touchUpInside" id="jW4-Br-WPw"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQ5-MW-z7h">
                             <state key="normal" image="img-player-repeat"/>
+                            <connections>
+                                <action selector="clickRepeat:" destination="iN0-l3-epB" eventType="touchUpInside" id="ub7-Kj-33N"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFY-Ky-xXU">
                             <frame key="frameInset" minX="5" minY="9" width="42" height="9"/>
@@ -113,7 +125,7 @@
                 <outlet property="shuffleButton" destination="Yh5-5P-jUN" id="1Ma-Cl-Q8a"/>
                 <outlet property="totalTimeLabel" destination="dFY-Ky-xXU" id="wnJ-zf-4AR"/>
             </connections>
-            <point key="canvasLocation" x="-61.5" y="712.5"/>
+            <point key="canvasLocation" x="-61.5" y="711.5"/>
         </view>
     </objects>
     <resources>

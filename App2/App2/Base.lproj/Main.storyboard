@@ -174,17 +174,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o81-jq-S20"/>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-Kk-4uO" customClass="PlayBar2" customModule="App2" customModuleProvider="target">
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIt-Kk-4uO"/>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ogk-nG-7HM">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ha-sd-IzO">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Ize-KS-Qqy"/>
+                                    <constraint firstAttribute="height" constant="35" id="p4R-cg-e8T"/>
+                                </constraints>
+                                <state key="normal" image="img-player-hide"/>
+                                <connections>
+                                    <action selector="backTap:" destination="7Be-q2-x2T" eventType="touchUpInside" id="0wm-So-oLv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Kw-yQ-ilv">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Qbn-SU-1zv"/>
+                                    <constraint firstAttribute="height" constant="35" id="hYn-Hf-iTw"/>
+                                </constraints>
+                                <state key="normal" image="img-player-option"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="o81-jq-S20" firstAttribute="height" secondItem="72h-2b-poh" secondAttribute="height" multiplier="0.4" id="0fH-Lx-0B5"/>
                             <constraint firstItem="yIt-Kk-4uO" firstAttribute="leading" secondItem="72h-2b-poh" secondAttribute="leading" id="1xe-ja-VTq"/>
+                            <constraint firstAttribute="trailing" secondItem="1Kw-yQ-ilv" secondAttribute="trailing" constant="15" id="2W3-8c-Wfz"/>
+                            <constraint firstItem="9ha-sd-IzO" firstAttribute="leading" secondItem="72h-2b-poh" secondAttribute="leading" constant="15" id="2bY-O9-YeV"/>
                             <constraint firstItem="Ogk-nG-7HM" firstAttribute="leading" secondItem="72h-2b-poh" secondAttribute="leading" id="C29-mU-wGZ"/>
                             <constraint firstItem="Ogk-nG-7HM" firstAttribute="top" secondItem="yIt-Kk-4uO" secondAttribute="bottom" id="KiL-6n-LSj"/>
                             <constraint firstItem="feW-tg-bwd" firstAttribute="top" secondItem="Ogk-nG-7HM" secondAttribute="bottom" id="RNj-Qj-apf"/>
@@ -193,7 +210,11 @@
                             <constraint firstItem="o81-jq-S20" firstAttribute="leading" secondItem="72h-2b-poh" secondAttribute="leading" id="eVb-xt-K32"/>
                             <constraint firstItem="yIt-Kk-4uO" firstAttribute="top" secondItem="o81-jq-S20" secondAttribute="bottom" id="euK-dI-i1n"/>
                             <constraint firstAttribute="trailing" secondItem="o81-jq-S20" secondAttribute="trailing" id="gBe-qm-Nj9"/>
+                            <constraint firstItem="1Kw-yQ-ilv" firstAttribute="height" secondItem="9ha-sd-IzO" secondAttribute="height" id="icI-oN-zue"/>
+                            <constraint firstItem="9ha-sd-IzO" firstAttribute="top" secondItem="w4L-le-FC7" secondAttribute="bottom" constant="15" id="j3r-hf-AiT"/>
                             <constraint firstItem="yIt-Kk-4uO" firstAttribute="height" secondItem="72h-2b-poh" secondAttribute="height" multiplier="0.1" id="ltP-hq-EdW"/>
+                            <constraint firstItem="1Kw-yQ-ilv" firstAttribute="top" secondItem="w4L-le-FC7" secondAttribute="bottom" constant="15" id="m8Z-Cm-1Kt"/>
+                            <constraint firstItem="1Kw-yQ-ilv" firstAttribute="width" secondItem="9ha-sd-IzO" secondAttribute="width" id="sk7-Ln-lPS"/>
                             <constraint firstItem="o81-jq-S20" firstAttribute="top" secondItem="w4L-le-FC7" secondAttribute="bottom" id="tbN-j6-hqi"/>
                         </constraints>
                     </view>
@@ -208,4 +229,8 @@
             <point key="canvasLocation" x="1512.8" y="459.22038980509751"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="img-player-hide" width="22" height="22"/>
+        <image name="img-player-option" width="22" height="22"/>
+    </resources>
 </document>

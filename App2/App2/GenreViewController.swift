@@ -21,13 +21,13 @@ class GenreViewController: UIViewController {
     let animator = Animator()
     
     var disposeBag = DisposeBag()
+    var currentUrl : String = ""
 
 //    var reachability = Reachability()
 
     @IBOutlet weak var collectionView: UICollectionView!
    
     override func viewDidLoad() {
-        self.tapPlayBar()
         super.viewDidLoad()
         self.collectionView.delegate = self
 //        self.navigationController?.delegate = self
@@ -59,24 +59,31 @@ class GenreViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tapPlayBar(isEnable: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        tapPlayBar(isEnable: false)
+    }
     // MARK : tap PlayBar gesture
-    func tapPlayBar() {
+    func tapPlayBar(isEnable : Bool) {
         let tap = UITapGestureRecognizer(target: self, action: #selector(goToPLayScreen))
-        PlayBar.shared().addGestureRecognizer(tap)
+        if isEnable == true {
+                PlayBar.shared().addGestureRecognizer(tap)
+        }   else{
+            PlayBar.shared().removeGestureRecognizer(tap)
+        }
+        
     }
     
     @objc
     func goToPLayScreen() {
         let playMusicVC = self.storyboard?.instantiateViewController(withIdentifier: "idplaymusicscreen") as! PlayViewController
-        if PlayBar.shared().imageInCell.image != nil {
-                    playMusicVC.largeImageSong.image = PlayBar.shared().imageInCell.image
-            print("not not not n;l")
-        }   else    {
-            print("nil nil nil nil nli ")
-        }
+
         PlayBar.shared().isHidden = true
         self.navigationController?.pushViewController(playMusicVC, animated: true)
-        
+        playMusicVC.setData(listUrl: self.currentUrl)
     }
     
 }
@@ -89,7 +96,8 @@ extension GenreViewController: UICollectionViewDelegateFlowLayout, UICollectionV
         
         let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
         let musicVC = self.storyboard?.instantiateViewController(withIdentifier: "idmusic") as! MusicListViewController
-        musicVC.url = String(format: url, genreIndices[indexPath.row])
+        currentUrl = String(format: url, genreIndices[indexPath.row])
+        musicVC.listUrl = currentUrl
         musicVC.titleType = cell.labelInCell.text
         musicVC.image = cell.imageInCell.image
         animator.animationFrame = cell.imageInCell.convert(cell.imageInCell.frame, to: self.view)

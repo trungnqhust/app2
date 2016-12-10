@@ -16,9 +16,8 @@ class MusicListViewController: UIViewController {
     @IBOutlet weak var labelGenre: UILabel!
     @IBOutlet weak var tableMusicView: UITableView!
     
-    var currentMusicPlaying = 0
-    var url : String!
-    let numberOfSong = 50
+    var currentMusicPlayingIndex = IndexPath(row: 0, section: 0)
+    var listUrl : String!
     var titleType : String!
     var image : UIImage!
     
@@ -29,24 +28,30 @@ class MusicListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()        
         // Do any additional setup after loading the view.
-        self.tableMusicView.delegate = self
+        //event
+        tapPlayBar()
+        self.event()
+        
+        //
         self.labelGenre.text = titleType
         self.imageGenre.image = self.image
         self.title = "Discover"
         self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        // tableView
+        self.tableMusicView.delegate = self
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableMusicView.register(nib, forCellReuseIdentifier: "cell")
         self.initListRow()
-        self.event()
         self.listRow.asObservable().bindTo(
             self.tableMusicView.rx.items(cellIdentifier: "cell", cellType: TableViewCell.self)
         ) { (row, url ,cell) in
-            cell.setUI(url: self.url, number: row)
+            cell.setUI(url: self.listUrl, number: row)
             }.addDisposableTo(self.disposeBag)
     }
 
     func initListRow() {
-        for i in 0..<numberOfSong{
+        for i in 0..<kNumberOfSong{
             listRow.value.append("\(i)")
         }
     }
@@ -67,8 +72,7 @@ class MusicListViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    //MARK : tap PlayBar gesture
-    
+    // MARK : tap PlayBar gesture
     func tapPlayBar() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(goToPLayScreen))
         PlayBar.shared().addGestureRecognizer(tap)
@@ -77,15 +81,10 @@ class MusicListViewController: UIViewController {
     @objc
     func goToPLayScreen() {
         let playMusicVC = self.storyboard?.instantiateViewController(withIdentifier: "idplaymusicscreen") as! PlayViewController
-        if PlayBar.shared().imageInCell.image != nil {
-            playMusicVC.largeImageSong.image = PlayBar.shared().imageInCell.image
-            print("not not not n;l")
-        }   else    {
-            print("nil nil nil nil nli ")
-        }
+        
         PlayBar.shared().isHidden = true
         self.navigationController?.pushViewController(playMusicVC, animated: true)
-        
+        playMusicVC.setData(listUrl: listUrl)
     }
     
     
@@ -99,24 +98,20 @@ class MusicListViewController: UIViewController {
     }
     */
 
+    func markPlaying(indexPath : IndexPath) {
+        let oldCell = self.tableMusicView.cellForRow(at: currentMusicPlayingIndex) as? TableViewCell
+        oldCell?.setPlayingView(set: false)
+        let newCell = self.tableMusicView.cellForRow(at: indexPath) as! TableViewCell
+        newCell.setPlayingView(set: true)
+        currentMusicPlayingIndex = indexPath
+    }
 }
 
 extension MusicListViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("sellected")
-        let oldIndex = IndexPath (item: currentMusicPlaying, section: 0)
-        print("\(currentMusicPlaying)")
-        let oldCell = tableView.cellForRow(at: oldIndex) as? TableViewCell
-        oldCell?.setPlayingView(set: false)
-        currentMusicPlaying = indexPath.row
-                print("\(currentMusicPlaying)")
-        let newCell = tableView.cellForRow(at: indexPath) as! TableViewCell
-        newCell.setPlayingView(set: true)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        DownloadManager.shared.downloadMusic(url: self.url, musicNumber: currentMusicPlaying) { (name, imagelink, artist) in
-            let song = Song(imageUrl: imagelink, name: name , author: artist)
-            PlayBar.setDataAndPlay(song: song)
+        self.markPlaying(indexPath: indexPath)
+        DownloadManager.shared.downloadMusic(url: self.listUrl, musicNumber: currentMusicPlayingIndex.row) { (name, imagelink, artist) in
+            Song.setData(imageUrl: imagelink, name: name , author: artist, order : indexPath.row)            
             PlayBar.shared().isHidden = false        
     }
     }

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("winrect =  \(winRect)" )
          PlayBar.shared().frame = CGRect(x: 0, y: (winRect?.height)! - 60, width: (winRect?.width)!, height: 60)
          PlayBar.shared().isHidden = true
-        window?.rootViewController?.view.addSubview( PlayBar.shared())
+        window?.rootViewController?.view.addSubview(PlayBar.shared())
         window?.rootViewController?.view.bringSubview(toFront:  PlayBar.shared())
         return true
     }

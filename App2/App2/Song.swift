@@ -9,14 +9,25 @@
 import UIKit
 
 class Song {
+    static var shared = Song()  //  song playing
     var image : UIImage!
     var name : String!
     var author : String!
     var imageUrl: String!
-    init(imageUrl : String, name : String, author : String) {
-        self.imageUrl = imageUrl
-        self.name = name
-        self.author = author
+    var order : Int!
+    
+    init() {
+        // nothing
+    }
+    static func setData(imageUrl : String, name : String, author : String, order : Int) {
+        shared.order = order
+        shared.imageUrl = imageUrl
+        shared.name = name
+        shared.author = author
+        DownloadManager.shared.loadImage(url: imageUrl) { (image) in
+            shared.image = image
+            PlayBar.setDataAndPlay()
+        }
     }
     
 }

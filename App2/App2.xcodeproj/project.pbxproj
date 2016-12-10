@@ -13,6 +13,8 @@
 		846D2C511DEB1E9900345FBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846D2C4F1DEB1E9900345FBF /* Main.storyboard */; };
 		846D2C531DEB1E9900345FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846D2C521DEB1E9900345FBF /* Assets.xcassets */; };
 		846D2C561DEB1E9900345FBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846D2C541DEB1E9900345FBF /* LaunchScreen.storyboard */; };
+		8483D3801DFB3A0F00B90487 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8483D37F1DFB3A0F00B90487 /* UIViewExtensions.swift */; };
+		8483D3821DFB3D0400B90487 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8483D3811DFB3D0400B90487 /* Constant.swift */; };
 		849965BF1DF41974004E0304 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849965BD1DF41974004E0304 /* TableViewCell.xib */; };
 		849965C21DF42ABD004E0304 /* PlayBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849965C11DF42ABD004E0304 /* PlayBar.xib */; };
 		849965C41DF42AD5004E0304 /* PlayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849965C31DF42AD5004E0304 /* PlayBar.swift */; };
@@ -39,6 +41,8 @@
 		846D2C521DEB1E9900345FBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		846D2C551DEB1E9900345FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		846D2C571DEB1E9900345FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8483D37F1DFB3A0F00B90487 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		8483D3811DFB3D0400B90487 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		849965BD1DF41974004E0304 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCell.xib; path = App2/TableViewCell.xib; sourceTree = "<group>"; };
 		849965C11DF42ABD004E0304 /* PlayBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayBar.xib; sourceTree = "<group>"; };
 		849965C31DF42AD5004E0304 /* PlayBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayBar.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		846D2C3F1DEB1E9900345FBF = {
 			isa = PBXGroup;
 			children = (
+				8483D37E1DFB39F000B90487 /* Extensions */,
 				84C728991DF44E80001F8AFD /* StringExtensions */,
 				849ADE751DF30EC8000D3F81 /* Transition */,
 				84C4323E1DEC8BBC002EBCC1 /* View */,
@@ -122,6 +127,15 @@
 				846D2C571DEB1E9900345FBF /* Info.plist */,
 			);
 			path = App2;
+			sourceTree = "<group>";
+		};
+		8483D37E1DFB39F000B90487 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8483D37F1DFB3A0F00B90487 /* UIViewExtensions.swift */,
+				8483D3811DFB3D0400B90487 /* Constant.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		849965C01DF42A42004E0304 /* PlayBar */ = {
@@ -309,7 +323,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C4323B1DEC8804002EBCC1 /* Genre.swift in Sources */,
+				8483D3801DFB3A0F00B90487 /* UIViewExtensions.swift in Sources */,
 				846D2C4E1DEB1E9900345FBF /* GenreViewController.swift in Sources */,
+				8483D3821DFB3D0400B90487 /* Constant.swift in Sources */,
 				84EBE55A1DF7903500C23FD0 /* PlayViewController.swift in Sources */,
 				84A004391DEDD0F10087CBBF /* MusicListViewController.swift in Sources */,
 				846D2C4C1DEB1E9900345FBF /* AppDelegate.swift in Sources */,
